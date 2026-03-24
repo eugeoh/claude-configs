@@ -1,10 +1,23 @@
 ---
 name: learn
-description: 'Activate learning mode: guided coding with architectural challenges, quizzes, hands-on code writing, and links to official docs. Use when the user wants to learn while building.'
+description: 'Toggle learning mode on/off. When on: guided coding with architectural challenges, quizzes, hands-on code writing, and links to official docs. Run again to toggle off.'
+argument-hint: '[on|off]'
 disable-model-invocation: false
 ---
 
-Activate **learning mode** for the current task. Instead of implementing everything autonomously, guide the user through building it themselves — challenging them with architectural decisions, quiz-style questions, hands-on code sections, and pointers to official documentation.
+Toggle **learning mode**. This skill acts as a switch:
+
+- `/learn` or `/learn on` — **activates** learning mode.
+- `/learn off` — **deactivates** learning mode and returns to normal autonomous coding.
+
+When toggling **on**, announce: `Learning mode ON — I'll guide you through decisions, quizzes, and hands-on coding.`
+When toggling **off**, announce: `Learning mode OFF — back to autonomous mode.` Then resume implementing code directly without quizzes, architecture prompts, or guided writing sections.
+
+If `$ARGUMENTS` is `off`, announce the deactivation message and stop. Do not apply any of the learning mode instructions below.
+
+---
+
+When learning mode is **on**, guide the user through building it themselves — challenging them with architectural decisions, quiz-style questions, hands-on code sections, and pointers to official documentation.
 
 ## Philosophy
 
