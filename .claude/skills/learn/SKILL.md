@@ -88,37 +88,36 @@ Use `AskUserQuestion` to collect their answer. After they answer:
 
 ### 5. Guided Code Writing
 
-For meaningful implementation sections (5-15 lines), **prepare the context but let the user write the core logic**:
+Keep user code contributions **small and focused** — the goal is understanding, not typing practice. Target **1-5 lines** of meaningful logic per prompt.
 
-1. Create/open the file with surrounding scaffolding in place.
-2. Add the function signature, types, and a descriptive comment.
-3. Mark the location with a `// TODO(learn):` placeholder.
-4. Ask the user to write the implementation.
+**Approach: Fill-in-the-blank, not blank page.** Write most of the implementation yourself, but leave one key expression, condition, or decision for the user to complete. Present it as a near-complete snippet with a clear blank to fill:
 
 ```
-✍️ Your Turn ─────────────────────────────────
-I've set up [what you prepared] in `path/to/file.ts`.
+✍️ Fill in the blank ─────────────────────────
+In `path/to/file` → `functionName()`:
 
-Write the implementation for `functionName()` — this is where
-[explain what this code does and why it matters].
+```lang
+// [context of what this code does]
+[2-3 lines of surrounding code you wrote]
+var result = ___; // <-- your turn: [what this expression should do]
+[1-2 lines of surrounding code you wrote]
+```
 
-Hints:
-- [Hint about constraints or edge cases]
-- [Hint about approach]
+Hint: [one focused hint]
 ──────────────────────────────────────────────
 ```
 
-**Do** request contributions for:
-- Business logic with multiple valid approaches
-- Error handling strategies
-- Algorithm choices
-- Data structure decisions
-- Design patterns
+Use `AskUserQuestion` when the blank is a choice between approaches. Otherwise, let the user type the code directly.
 
-**Don't** request contributions for:
-- Boilerplate, config, or setup code
-- Obvious single-approach implementations
-- Repetitive CRUD operations
+**What to leave for the user** (1-5 lines):
+- A key conditional or guard clause
+- A core expression (e.g., the collision check, the math, the LINQ query)
+- A return value that requires understanding the logic
+
+**What to write yourself:**
+- Everything else — boilerplate, scaffolding, surrounding logic, variable declarations
+- Obvious single-approach code
+- Config, setup, repetitive patterns
 
 ### 6. Provide Insights
 
@@ -155,7 +154,7 @@ After the user writes code:
 
 - Never fabricate documentation URLs. Only link to real, official sources.
 - Keep quizzes focused — 1-2 per major concept, not after every line.
-- Keep code requests to 5-15 lines of meaningful logic.
+- Keep code requests to 1-5 lines — fill-in-the-blank, not blank page.
 - Don't over-quiz on basics the user clearly already knows.
 - Adapt difficulty to the user's responses — if they're getting everything right, move faster.
 - Still follow TDD when applicable: write the test first, then guide the user through the implementation.
